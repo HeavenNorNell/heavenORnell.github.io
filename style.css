@@ -1,0 +1,23 @@
+body {
+    background-color:#afd2e9;
+    font-family: rockwell;
+}
+#Intrests {
+    color: 	#b486ab;
+}
+#TopBar {
+    color:#82667f;
+}
+#LeafSheep{
+    border: 6px solid #6da34d;
+    width: 300px;
+    height: 210px;
+    background: #6da34d;
+}
+h3{
+    position:relative;
+    top:-18px;
+    font-family:marker felt;
+    color:#00120b;
+
+}
