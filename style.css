@@ -1,6 +1,16 @@
 body {
-    background-color:#afd2e9;
+    background-color: #00120b;
     font-family: rockwell;
+    margin:auto;
+    width:50%;
+}
+#center {
+    border:1px solid #afd2e9;
+    padding:50px;
+    height:3000px;
+    background: #afd2e9;
+    margin:auto;
+    width:75%;
 }
 #Intrests {
     color: 	#b486ab;
@@ -8,16 +18,59 @@ body {
 #TopBar {
     color:#82667f;
 }
+.text {
+    position:relative;
+    left:25px;
+    top:-100px;
+}
 #LeafSheep{
     border: 6px solid #6da34d;
     width: 300px;
     height: 210px;
     background: #6da34d;
+    position:relative;
+    top:-310px;
+    
+    left:400px;
 }
-h3{
+    h3{
     position:relative;
     top:-18px;
     font-family:marker felt;
     color:#00120b;
-
 }
+    h2{
+        font-size:20px;
+    }
+    h1{
+        font-size:30px;
+
+    }
+    #title {
+        position:relative;
+        left: 80px;
+    }
+    #gif {
+        position:relative;
+        top:-80px;
+    }
+nav{
+    color:#00120b;
+    position:relative;
+    left:25px;
+}
+#secret {
+    position:relative;
+    top:2400px;
+}
+    #nav-ul {
+        list-style-image: none;
+    }
+    .nav-li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+    ul {
+        position:relative;
+        top:-100px;
+    }
