@@ -70,15 +70,14 @@ nav{
 }
     #nav-ul {
         list-style-image: none;
+        position:relative;
+        top:-100px;
     }
     .nav-li {
         display: inline-block;
         padding: 0 10px;
     }
-    #nav-ul {
-        position:relative;
-        top:-100px;
-    }
+
     #portfolio {
         list-style-type: none;
         padding-left: 0;
@@ -108,5 +107,8 @@ nav{
         image-rendering: pixelated;                 /* Universal support since 2021   */
         image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
         -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
-    
+    }
+    #nav-ulP {
+        position:relative;
+        top:-150px;
     }
