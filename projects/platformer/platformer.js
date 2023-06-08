@@ -68,6 +68,23 @@ $(function () {
     w=w+mod;
     h=h+2;
   }
+center=850
+  for(let i=0; i < 40; i++){
+    createPlatform(center,h,w,2);
+    mod=mod+0.1;
+    wClone=w;
+    w=w-mod;
+    h=h-2;
+    center=850-w;
+  }
+
+  for(let i=0; i < 40; i++){
+    createPlatform(center,h,w,2);
+    mod=mod-0.1;
+    wClone=w;
+    w=w+mod;
+    h=h+2;
+  }
     // TODO 2
     // Create collectables
     // You must decide on the collectable type, the x position, the y position, the gravity, and the bounce strength
