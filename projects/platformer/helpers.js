@@ -408,19 +408,6 @@ function playerFrictionAndGravity() {
     player.speedY = player.speedY + gravity;
   }
 }
-
-function drawPlatforms() {
-  for (var i = 0; i < platforms.length; i++) {
-    ctx.fillStyle = "grey";
-    ctx.fillRect(
-      platforms[i].x,
-      platforms[i].y,
-      platforms[i].width,
-      platforms[i].height
-    );
-  }
-}
-
 function drawProjectiles() {
   for (var i = 0; i < projectiles.length; i++) {
     ctx.drawImage(
@@ -460,6 +447,20 @@ function drawCannons() {
     ctx.restore(); //this unrotates the canvas so the canvas is straight, but now since you did that the picture looks rotated
   }
 }
+function drawPlatforms() {
+  for (var i = 0; i < platforms.length; i++) {
+    ctx.fillStyle = "grey";
+    ctx.fillRect(
+      platforms[i].x,
+      platforms[i].y,
+      platforms[i].width,
+      platforms[i].height
+    );
+  }
+}
+
+
+
 
 function drawCollectables() {
   for (var i = 0; i < collectables.length; i++) {

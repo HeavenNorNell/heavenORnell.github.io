@@ -46,57 +46,69 @@ $(function () {
     // TODO 1
     // Create platforms
     // You must decide the x position, y position, width, and height of the platforms
-    // example usage: createPlatform(x,y,width,height)
-    let w=-300;
+    // example usage: createPlatform(x,y,width,height) 
+
+   createCannon("bottom",630,4000,40,40);
+   createCannon("bottom",660,4300,40,40);
+   createCannon("bottom",600,3650,40,40);
+   createCannon("bottom",690,3000,40,40);
+   createCannon("bottom",580,6300,40,40);
+   createCannon("bottom",560,2600,40,40);
+   createCannon("top",600,7500,40,40);
+   createCannon("top",580,6900,40,40);
+   createCannon("top",880,6000,40,40);
+   createCannon("top",860,8000,40,40);
+
+    let w=-240;
     let wClone=0;
-    let h=760;
+    let h=700;
     let mod =1;
-    let center=300;
+    let center=560;
   for(let i=0; i < 50; i++){
     // createPlatform(center,h,w,2);
-    mod=mod-0.1;
+    mod=mod-0.04;
     wClone=w;
     w=w-mod;
-    h=h-2;
-    center=550-w;
+    h=h-1;
+    center=560-w;
   }
 
-  for(let i=0; i < 80; i++){
-    createPlatform(center,h,w,2);
-    mod=mod-0.1;
+  for(let i=0; i < 160; i++){
+    createPlatform(center,h,w,1);
+    mod=mod-0.04;
     wClone=w;
     w=w+mod;
-    h=h+2;
+    h=h+1;
   }
-  for(let i=0; i < 80; i++){
-    createPlatform(center,h,w,2);
-    mod=mod+0.1;
+  for(let i=0; i < 160; i++){
+    createPlatform(center,h,w,1);
+    mod=mod+0.04;
     wClone=w;
     w=w-mod;
-    h=h-2;
-    center=545-w;
+    h=h-1;
+    center=560-w;
   }
   function hill (thingy){
-  mod=-3;
+  mod=-2.5;
   center=thingy;
   w=100;
   h=740;
   center=thingy;
-    for(let i=0; i < 17; i++){
-       h=h-2;
-      createPlatform(center,h,w,2);
-    mod=mod-0.1;
+    for(let i=0; i < 27; i++){
+       h=h-1;
+      createPlatform(center,h,w,1);
+    mod=mod-0.05;
     wClone=w;
     w=w+mod;
 
   }
 center=thingy-w
-  for(let i=0; i < 17; i++){
-    createPlatform(center,h,w,2);
-    mod=mod+0.1;
+  for(let i=0; i < 27; i++){
+    createPlatform(center,h,w,1);
+    mod=mod+0.05;
     wClone=w;
     w=w-mod;
-    h=h+2;
+    h=h+1;
     center=thingy-w;
   }
   }
@@ -105,7 +117,8 @@ center=thingy-w
   hill(1100);
   hill(1300);
 
-createCannon(right,4,10,10)    // TODO 2
+
+    // TODO 2
     // Create collectables
     // You must decide on the collectable type, the x position, the y position, the gravity, and the bounce strength
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
