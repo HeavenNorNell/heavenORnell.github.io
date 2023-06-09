@@ -117,7 +117,10 @@ center=thingy-w
   hill(1100);
   hill(1300);
 
-
+  for(let i=0;i<100;i++){
+    wait(1000);
+   createCollectable("database", Math.random()*1000, 0, 1,0);
+  }
     // TODO 2
     // Create collectables
     // You must decide on the collectable type, the x position, the y position, the gravity, and the bounce strength
