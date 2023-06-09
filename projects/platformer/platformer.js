@@ -77,11 +77,11 @@ $(function () {
     center=545-w;
   }
   function hill (thingy){
-  mod=-3
+  mod=-3;
   center=thingy;
   w=100;
   h=740;
-  center=thingy
+  center=thingy;
     for(let i=0; i < 17; i++){
        h=h-2;
       createPlatform(center,h,w,2);
@@ -101,12 +101,11 @@ center=thingy-w
   }
   }
   hill(300);
-  hill(90)
-  hill(1100)
-  hill(1300)
-  //cannons
+  hill(90);
+  hill(1100);
+  hill(1300);
 
-    // TODO 2
+createCannon(right,4,10,10)    // TODO 2
     // Create collectables
     // You must decide on the collectable type, the x position, the y position, the gravity, and the bounce strength
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
