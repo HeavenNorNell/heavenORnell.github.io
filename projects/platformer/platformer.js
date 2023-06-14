@@ -48,76 +48,76 @@ $(function () {
     // You must decide the x position, y position, width, and height of the platforms
     // example usage: createPlatform(x,y,width,height) 
 
-   createCannon("bottom",630,4000,40,40);
-   createCannon("bottom",660,4300,40,40);
-   createCannon("bottom",600,3650,40,40);
-   createCannon("bottom",690,3000,40,40);
-   createCannon("bottom",580,6300,40,40);
-   createCannon("bottom",560,2600,40,40);
-   createCannon("top",600,7500,40,40);
-   createCannon("top",580,6900,40,40);
-   createCannon("top",880,6000,40,40);
-   createCannon("top",860,8000,40,40);
+    createCannon("bottom", 630, 4000, 40, 40);
+    createCannon("bottom", 660, 4300, 40, 40);
+    createCannon("bottom", 600, 3650, 40, 40);
+    createCannon("bottom", 690, 3000, 40, 40);
+    createCannon("bottom", 580, 6300, 40, 40);
+    createCannon("bottom", 560, 2600, 40, 40);
+    createCannon("top", 600, 7500, 40, 40);
+    createCannon("top", 580, 6900, 40, 40);
+    createCannon("top", 880, 6000, 40, 40);
+    createCannon("top", 860, 8000, 40, 40);
 
-    let w=-240;
-    let wClone=0;
-    let h=700;
-    let mod =1;
-    let center=560;
-  for(let i=0; i < 50; i++){
-    // createPlatform(center,h,w,2);
-    mod=mod-0.04;
-    wClone=w;
-    w=w-mod;
-    h=h-1;
-    center=560-w;
-  }
+    let w = -240;
+    let wClone = 0;
+    let h = 700;
+    let mod = 1;
+    let center = 560;
+    for (let i = 0; i < 50; i++) {
+      // createPlatform(center,h,w,2);
+      mod = mod - 0.04;
+      wClone = w;
+      w = w - mod;
+      h = h - 1;
+      center = 560 - w;
+    }
 
-  for(let i=0; i < 160; i++){
-    createPlatform(center,h,w,1);
-    mod=mod-0.04;
-    wClone=w;
-    w=w+mod;
-    h=h+1;
-  }
-  for(let i=0; i < 160; i++){
-    createPlatform(center,h,w,1);
-    mod=mod+0.04;
-    wClone=w;
-    w=w-mod;
-    h=h-1;
-    center=560-w;
-  }
-  function hill (thingy){
-  mod=-2.5;
-  center=thingy;
-  w=100;
-  h=740;
-  center=thingy;
-    for(let i=0; i < 27; i++){
-       h=h-1;
-      createPlatform(center,h,w,1);
-    mod=mod-0.05;
-    wClone=w;
-    w=w+mod;
+    for (let i = 0; i < 160; i++) {
+      createPlatform(center, h, w, 1);
+      mod = mod - 0.04;
+      wClone = w;
+      w = w + mod;
+      h = h + 1;
+    }
+    for (let i = 0; i < 160; i++) {
+      createPlatform(center, h, w, 1);
+      mod = mod + 0.04;
+      wClone = w;
+      w = w - mod;
+      h = h - 1;
+      center = 560 - w;
+    }
+    function hill(thingy) {
+      mod = -2.5;
+      center = thingy;
+      w = 100;
+      h = 740;
+      center = thingy;
+      for (let i = 0; i < 27; i++) {
+        h = h - 1;
+        createPlatform(center, h, w, 1);
+        mod = mod - 0.05;
+        wClone = w;
+        w = w + mod;
 
-  }
-center=thingy-w
-  for(let i=0; i < 27; i++){
-    createPlatform(center,h,w,1);
-    mod=mod+0.05;
-    wClone=w;
-    w=w-mod;
-    h=h+1;
-    center=thingy-w;
-  }
-  }
-  hill(300);
-  hill(90);
-  hill(1100);
-  hill(1300);
+      }
+      center = thingy - w
+      for (let i = 0; i < 27; i++) {
+        createPlatform(center, h, w, 1);
+        mod = mod + 0.05;
+        wClone = w;
+        w = w - mod;
+        h = h + 1;
+        center = thingy - w;
+      }
+    }
+    hill(300);
+    hill(90);
+    hill(1100);
+    hill(1300);
 
-  setInterval(createCollectable("database", Math.random()*1000, 0, 1,0), 1000);
+    setInterval(createCollectable("database", Math.random() * 1000, 0, 1, 0), 1000);
 
     // TODO 2
     // Create collectables
