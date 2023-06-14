@@ -117,7 +117,13 @@ $(function () {
     hill(1100);
     hill(1300);
 
-    setInterval(createCollectable("database", Math.random() * 1000, 0, 1, 0), 1000);
+    function createRandomCannon() {
+      createCollectable("database", Math.random() * 1000, 0, 1, 0);
+    }
+
+    setInterval(createRandomCannon, 3000);
+    
+
 
     // TODO 2
     // Create collectables
