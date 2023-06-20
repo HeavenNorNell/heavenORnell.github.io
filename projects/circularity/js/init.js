@@ -52,17 +52,12 @@ for (let i = 0; i < 100; i++) {
         return ticker;
        }
         function update() {
-            console.time("update");
 
            ticker = -1;
             for(let i = 0; i < 100; i++) {
-                physikz.updatePosition(circles[tick(1)]);
+                physikz.updatePosition(circles[i]);
+                game.checkCirclePosition(circles[i]);
             }
-           ticker = -1;
-            for(let i = 0; i < 100; i++) {
-                game.checkCirclePosition(circles[tick(1)]);
-            }
-            console.timeEnd("update");
 
             // TODO 9 : Iterate over the array
            
