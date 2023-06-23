@@ -34,7 +34,39 @@
             flex-direction: column;
             align-items: center;
         }
-
+        #likeCount0{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin-right: 258px;
+        }
+        #likeCount1{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin-right: 258px;
+        }
+        #likeCount2{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin-right: 258px;
+        }        
+        #likeCount3{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin-right: 258px;
+        }
+        #likeCount4{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin-right: 258px;
+        }
+        #profile_pic{
+            border-radius: 300px;
+            width:30px;
+            height:30px;
+        }
+        #name{
+            position:relative;
+            left:120px;
+        }
+        #followers{
+            position:relative;
+            left:120px;
+        }
     </style>
 
 </head>
@@ -44,42 +76,47 @@
 
     <h1 class="brand-font"> Slugstagram! </h1>
     <h5 class="brand-font"> Welcome to the nudibranchs' world! </h5>
+
+    <div id="name"></div>
+    <div id="followers"></div>
+    <img id="profile_pic"  style="width: 150px; height: 150px; object-fit: cover;">
+
     <!-- Cat Photos -->
     <!-- Picture container -->
     <div id="pic-container">
 
         <img src="https://4.bp.blogspot.com/-IOh4k66_PSU/UxVPuT4-d9I/AAAAAAAALjs/Z3HYVVFhykw/s1600/Chromodoris+willani.jpg" > 
-        <div id="likeCount1"></div>
+        <div id="likeCount4"></div>
     
-        <button id="likeBtn">Like</button> 
+        <button id="likeBtn" onclick="likePhoto(4)">Like</button> 
         <p class="caption">Feeling majestic!</p>
 
 
         <img src="http://3.bp.blogspot.com/-4Txz-FLr_oU/UxVVYDRk1TI/AAAAAAAALkE/xWPP2zOCOJQ/s400/Hypselodoris+bennetti.jpg" > 
-        <div id="likeCount1"></div>
+        <div id="likeCount0"></div>
     
-        <button id="likeBtn">Like</button> 
+        <button id="likeBtn" onclick="likePhoto(0)">Like</button> 
         <p class="caption">Bonding time with my neice @nudibranchesvstheworld</p>
 
 
         <img src="https://artistbonniekelso.files.wordpress.com/2022/02/cute-bunny-sea-slug-jorunna-parva-8.jpg" > 
         <div id="likeCount1"></div>
     
-        <button id="likeBtn">Like</button> 
+        <button id="likeBtn" onclick="likePhoto(1)">Like</button> 
         <p class="caption">#nofilter</p>
 
 
         <img src="https://letsdivetulamben.com/wp-content/uploads/2017/01/Leaf-Sheep-Sea-Slug-Tulamben-Bali.jpg" > 
-        <div id="likeCount1"></div>
+        <div id="likeCount2"></div>
     
-        <button id="likeBtn">Like</button> 
+        <button id="likeBtn" onclick="likePhoto(2)">Like</button> 
         <p class="caption">Best friends!</p>
 
 
         <img src="https://preview.redd.it/z6urombng3o61.jpg?auto=webp&s=10dfd5ef05c6402e1087ccde88e82dc0e989a0a3" > 
-        <div id="likeCount1"></div>
+        <div id="likeCount3"></div>
     
-        <button id="likeBtn">Like</button> 
+        <button id="likeBtn" onclick="likePhoto(3)">Like</button> 
         <p class="caption">#queenoftheseachallenge</p>
     </div>
 </body>
