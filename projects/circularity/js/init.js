@@ -26,13 +26,13 @@ var init = function (window) {
         // TODO 2 : Create a function that draws a circle 
 function drawCircle() {
     circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-    physikz.addRandomVelocity(circle, canvas, 10, 10);
+    physikz.addRandomVelocity(circle, canvas, 30, 10);
     view.addChild(circle);
     circles.push(circle);
 }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 300; i++) {
     drawCircle();
 }
 
@@ -54,7 +54,7 @@ for (let i = 0; i < 100; i++) {
         function update() {
 
            ticker = -1;
-            for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < 300; i++) {
                 physikz.updatePosition(circles[i]);
                 game.checkCirclePosition(circles[i]);
             }
