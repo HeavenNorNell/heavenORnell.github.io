@@ -10,6 +10,7 @@ function runProgram() {
   // Constant Variables
   var FRAME_RATE = 10;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  var rect = board.getBoundingClientRect();
 
   // Game Item Objects
 
@@ -44,20 +45,34 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
-//  1 = right, 2 = down, 3 = right, 4 = up
+//  1 = right, 2 = down, 3 = left, 4 = up
   function newFrame() {
 
+
+
 $(document).on("keypress", function(e){
-  if(e.key === "a"){
+  if(e.key === "a" && snakeHead.rotation !== 1){
     snakeHead.rotation = 3;
-  } else if(e.key === "w"){
+  } else if(e.key === "w" && snakeHead.rotation !== 2){
     snakeHead.rotation = 4;
-  } else if(e.key === "d"){
+  } else if(e.key === "d" && snakeHead.rotation !== 3){
     snakeHead.rotation = 1;
-  } else if(e.key === "s"){
+  } else if(e.key === "s" && snakeHead.rotation !== 4){
     snakeHead.rotation = 2;
   } 
 });
+
+if(rect.right - 40 < snakeHead.x + 20 && snakeHead.rotation === 1){
+  console.log(1)
+endGame()
+} else if(rect.left + 20 > snakeHead.x && snakeHead.rotation === 3) {
+endGame()
+} else if(rect.top + 20 > snakeHead.y && snakeHead.rotation === 4){
+  endGame()
+} else if (rect.bottom - 40 < snakeHead.y + 20 && snakeHead.rotation === 2) {
+  endGame()
+}
+
 // 1 = right, 2 = down, 3 = left, 4 = up
     if(snakeHead.rotation === 1){
           moveBoxTo(snakeHead.x + 20, snakeHead.y);
