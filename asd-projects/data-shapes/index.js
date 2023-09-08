@@ -45,7 +45,7 @@ $(document).ready(function () {
   }
   dataShapes.push(shape);
   // TODO 2: add a new property to all data shapes
-  for (i=0;i<26;i++){
+  for (i=0;i<27;i++){
     var currentShape = dataShapes[i];
     console.log(currentShape)
     if (currentShape.color === 'red'){
