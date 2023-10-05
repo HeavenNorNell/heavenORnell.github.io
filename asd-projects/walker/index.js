@@ -11,8 +11,8 @@ function runProgram() {
   let walker = {
     "speedX": 0,
     "speedY": 0,
-    "posX": 0,
-    "posY": 0
+    "posX": 100,
+    "posY": 100
   }
 
   let KEY = {
