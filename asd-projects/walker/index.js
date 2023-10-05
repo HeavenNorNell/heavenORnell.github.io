@@ -21,7 +21,7 @@ function runProgram() {
     "d": 68,
     "w": 87
   }
-  
+
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
@@ -32,7 +32,7 @@ function runProgram() {
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', checkKey);
-  $(document).on('keyup', function(){
+  $(document).on('keyup', function () {
     walker.speedX = 0;
     walker.speedY = 0;
   });
@@ -45,14 +45,15 @@ function runProgram() {
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    draw();
     move();
+    wallCollision();
+    draw();
   }
 
   /* 
   Called in response to events.
   */
- 
+
   function checkKey(event) {
     if (event.which === KEY.a) {
       walker.speedX = -5
@@ -75,13 +76,23 @@ function runProgram() {
     walker.posX += walker.speedX;
     walker.posY += walker.speedY;
   }
-  function wallCollision(){
-    if(posX <= 0 || posX >= $("#board").width()){
-      walker.speedX = 0;
-    } else if(posY <= 0 || posY >= $("#board").height()){
-      walker.speedY = 0;
+  function wallCollision() {
+    switch (walker.posX) {
+      case 0:
+        walker.posX -= walker.speedX;
+        break;
+      case $("#board").width() - $("#walker").width():
+        walker.posX -= walker.speedX;
+        break;
+    }
+    switch (walker.posY) {
+      case 0:
+        walker.posY -= walker.speedY;
+        break;
+      case $("#board").height() - $("#walker").height():
+        walker.posY -= walker.speedY;
+    }
   }
-}
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
