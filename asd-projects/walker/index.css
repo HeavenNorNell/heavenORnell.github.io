@@ -6,13 +6,12 @@ body {
 #board {
   width: 800px;
   height: 800px;
-  border: 1px solid darkgreen;
+  border: 5px solid darkgreen;
   background-color: black;
   position: relative;
   top: 50px;
   left: 550px;
 }
-
 #walker {
   background-color: darkgreen;
   width: 50px;
