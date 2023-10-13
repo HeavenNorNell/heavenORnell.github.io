@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-.head {
+.part {
   background-color: teal;
   width: 20px;
   height: 20px;
@@ -22,9 +22,17 @@ body {
 
 .apple {
   background-color: red;
+  color: white;
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 100px;  /* Uncomment if you want to set a "starting" position */
-  top: 100px;   /* Uncomment if you want to set a "starting" position */
+  left: 140px;  /* Uncomment if you want to set a "starting" position */
+  top: 80px;   /* Uncomment if you want to set a "starting" position */
 }
+
+  p{
+    position: absolute;
+    top: -15px;
+    left: 6px;
+    font-family: ;
+  }
