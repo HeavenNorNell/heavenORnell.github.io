@@ -22,10 +22,9 @@ function runProgram() {
     "rotation": 4
   }
   let snake = [snakeHead];
-
   let apple = {
-    "x": 100,
-    "y": 100
+    "x": 200,
+    "y": 200
   }
 
   // one-time setup
@@ -35,12 +34,13 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function moveSquareTo(XEdit, YEdit){
-    for(i = 0; i < snake.length - 1; i++){
-      snake[i].x += XEdit;
-      $("#" + i).css("left", snake[i].x)
-      snake[i].y += YEdit;
-      $("#" + i).css("top", snake[i].y)
+  function moveSquareTo() {
+    for (i = 0; i < snake.length; i++) {
+    info = checkRotation(i)
+    snake[i].x += info[0];
+    $("#" + i).css("left", snake[i].x)
+    snake[i].y += info[1];
+    $("#" + i).css("top", snake[i].y)
     }
   }
   /* 
@@ -51,7 +51,7 @@ function runProgram() {
   function newFrame() {
     handleKeypress();
     hasHitWall();
-    checkRotation();
+    moveSquareTo()
     hasHitApple();
     updateSpeed();
   }
@@ -64,14 +64,14 @@ function runProgram() {
   }
   function handleKeypress() {
     $(document).on("keypress", function (e) {
-      if (e.key === "a" && snakeHead.rotation !== 1) {
-        snakeHead.rotation = 3;
-      } else if (e.key === "w" && snakeHead.rotation !== 2) {
-        snakeHead.rotation = 4;
-      } else if (e.key === "d" && snakeHead.rotation !== 3) {
-        snakeHead.rotation = 1;
-      } else if (e.key === "s" && snakeHead.rotation !== 4) {
-        snakeHead.rotation = 2;
+      if (e.key === "a" && snake[0].rotation !== 1) {
+        snake[0].rotation = 3;
+      } else if (e.key === "w" && snake[0].rotation !== 2) {
+        snake[0].rotation = 4;
+      } else if (e.key === "d" && snake[0].rotation !== 3) {
+        snake[0].rotation = 1;
+      } else if (e.key === "s" && snake[0].rotation !== 4) {
+        snake[0].rotation = 2;
       }
     });
   }
@@ -79,28 +79,20 @@ function runProgram() {
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function checkRotation() {
+  function checkRotation(pos) {
     // 1 = right, 2 = down, 3 = left, 4 = up
-    if (snakeHead.rotation === 1) {
-      moveSquareTo(20, 0);
-    } else if (snakeHead.rotation === 2) {
-      moveSquareTo(0, 20);
-    } else if (snakeHead.rotation === 3) {
-      moveSquareTo(-20, 0);
+    var arr = []
+    if (snake[pos].rotation === 1) {
+      arr = [20, 0]
+    } else if (snake[pos].rotation === 2) {
+      arr = [0, 20];
+    } else if (snake[pos].rotation === 3) {
+      arr = [-20, 0];
     } else {
-      moveSquareTo(0, -20);
+      arr = [0, -20];
     }
+    return arr;
   }
-
-  // if (snakeHead.rotation === 1) {
-  //   moveHeadTo(snakeHead.x + 20, snakeHead.y);
-  // } else if (snakeHead.rotation === 2) {
-  //   moveHeadTo(snakeHead.x, snakeHead.y + 20);
-  // } else if (snakeHead.rotation === 3) {
-  //   moveHeadTo(snakeHead.x - 20, snakeHead.y);
-  // } else {
-  //   moveHeadTo(snakeHead.x, snakeHead.y - 20);
-  // }
 
 
 
@@ -108,7 +100,7 @@ function runProgram() {
 
   }
   function hasHitApple() {
-    if (snakeHead.x === apple.x && snakeHead.y === apple.y) {
+    if (snake[0].x === apple.x && snake[0].y === apple.y) {
       points++;
       updateApple();
     }
@@ -119,41 +111,30 @@ function runProgram() {
     apple.y = Math.floor(Math.random() * 22) * 20;
     $(".apple").css("top", apple.y);
     $("p").text(points);
-    makeSnakeSquare(points);
+    makeSnakeSquare();
   }
 
-  function makeSnakeSquare(num){
-      //  1 = right, 2 = down, 3 = left, 4 = up
+  function makeSnakeSquare() {
+    //  1 = right, 2 = down, 3 = left, 4 = up
     var newSquare = {
-      x : 0,
-      y : 0
-    }
-    if(snake[0].rotation === 1){
-      newSquare.x = snake[0].y + 20;
-      newSquare.y = snake[0].y
-    } else if(snake[0].rotation === 2){
-      newSquare.x = snake[0].x;
-      newSquare.y = snake[0].y - 20;
-    } else if(snake[0].rotation === 3){
-      newSquare.x = snake[0].x + 20;
-      newSquare.y = snake[0].y;
-    } else if(snake[0].rotation === 4){
-      newSquare.x = snake[0].x;
-      newSquare.y = snake[0].y - 20;
+      "x": 100,
+      "y": 100,
+      "rotation": 1
     }
     snake.push(newSquare)
-    $("<div class = part id =" + points + ">").appendTo("body");
-    console.log("<div class = part id =" + points + ">")
+    $("<div class = part id =" + points + ">").appendTo("body")
+    console.log(snake[0].y)
+    console.log(snake[1].y)
   }
 
   function hasHitWall() {
-    if (rect.right - 60 < snakeHead.x && snakeHead.rotation === 1) {
+    if (rect.right - 60 < snake[0].x && snake[0].rotation === 1) {
       endGame()
-    } else if (rect.left + 20 > snakeHead.x && snakeHead.rotation === 3) {
+    } else if (rect.left + 20 > snake[0].x && snake[0].rotation === 3) {
       endGame()
-    } else if (rect.top + 20 > snakeHead.y && snakeHead.rotation === 4) {
+    } else if (rect.top + 20 > snake[0].y && snake[0].rotation === 4) {
       endGame()
-    } else if (rect.bottom - 60 < snakeHead.y && snakeHead.rotation === 2) {
+    } else if (rect.bottom - 60 < snake[0].y && snake[0].rotation === 2) {
       endGame()
     }
   }
