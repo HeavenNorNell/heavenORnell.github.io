@@ -16,21 +16,20 @@ function runProgram() {
 
   var head = jQuery('.head');
 
-  let snakeHead = {
-    "x": 100,
-    "y": 100,
-    "rotation": 4
-  }
-  let snake = [snakeHead];
+  // let snakeHead = {
+  //   "x": 100,
+  //   "y": 100,
+  //   "rotation": 1
+  // }
+  let snake = [];
   let apple = {
     "x": 200,
     "y": 200
   }
-
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
-
+  makeSnakeSquare()
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
