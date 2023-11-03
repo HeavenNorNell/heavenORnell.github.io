@@ -21,7 +21,13 @@ function runProgram() {
   //   "y": 100,
   //   "rotation": 1
   // }
+  let snakeHead = {
+    "x" : 100,
+    "y" : 100,
+    "rotation" : 1
+  }
   let snake = [];
+  snake.push(snakeHead);
   let apple = {
     "x": 200,
     "y": 200
@@ -29,17 +35,19 @@ function runProgram() {
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
-  makeSnakeSquare()
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function moveSquareTo() {
+  function moveHeadTo() {
     for (i = 0; i < snake.length; i++) {
     info = checkRotation(i)
     snake[i].x += info[0];
     $("#" + i).css("left", snake[i].x)
     snake[i].y += info[1];
     $("#" + i).css("top", snake[i].y)
+    if(i > 0){
+      snake[i].rotation = snake[i-1].rotation
+    }
     }
   }
   /* 
@@ -50,7 +58,7 @@ function runProgram() {
   function newFrame() {
     handleKeypress();
     hasHitWall();
-    moveSquareTo()
+    moveHeadTo()
     hasHitApple();
     updateSpeed();
   }
@@ -115,15 +123,16 @@ function runProgram() {
 
   function makeSnakeSquare() {
     //  1 = right, 2 = down, 3 = left, 4 = up
+    rot = checkRotation(points - 1);
     var newSquare = {
-      "x": 100,
-      "y": 100,
+      "x": snake[points-1].x - rot[0],
+      "y": snake[points-1].y - rot[1],
       "rotation": 1
     }
-    snake.push(newSquare)
-    $("<div class = part id =" + points + ">").appendTo("body")
+    snake.push(newSquare);
+    $("<div class = part id =" + points + ">").appendTo("#board")
     console.log(snake[0].y)
-    console.log(snake[1].y)
+    console.log(snake)
   }
 
   function hasHitWall() {
