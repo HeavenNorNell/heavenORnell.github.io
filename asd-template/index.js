@@ -39,6 +39,7 @@ function runProgram() {
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   function moveHeadTo() {
+    let newRot;
     for (i = 0; i < snake.length; i++) {
     info = checkRotation(i)
     snake[i].x += info[0];
@@ -46,8 +47,9 @@ function runProgram() {
     snake[i].y += info[1];
     $("#" + i).css("top", snake[i].y)
     if(i > 0){
-      snake[i].rotation = snake[i-1].rotation
+      snake[i].rotation = newRot
     }
+    newRot = snake[i].rotation
     }
   }
   /* 
@@ -127,7 +129,7 @@ function runProgram() {
     var newSquare = {
       "x": snake[points-1].x - rot[0],
       "y": snake[points-1].y - rot[1],
-      "rotation": 1
+      "rotation": snake[points-1].rotation
     }
     snake.push(newSquare);
     $("<div class = part id =" + points + ">").appendTo("#board")
