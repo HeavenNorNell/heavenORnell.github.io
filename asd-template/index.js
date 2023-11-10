@@ -2,6 +2,8 @@
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
 
+let HighScore = 0;
+
 function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
@@ -14,24 +16,21 @@ function runProgram() {
   var points = 0;
   // Game Item Objects
 
-  var head = jQuery('.head');
-
-  // let snakeHead = {
-  //   "x": 100,
-  //   "y": 100,
-  //   "rotation": 1
-  // }
+  $("<div class = part id = 0>").appendTo("#board")
   let snakeHead = {
-    "x" : 100,
-    "y" : 100,
-    "rotation" : 1
+    "x": 100,
+    "y": 100,
+    "rotation": 1
   }
   let snake = [];
   snake.push(snakeHead);
+
+  $("<div class = apple>").appendTo("#board")
   let apple = {
     "x": 200,
     "y": 200
   }
+
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
@@ -40,16 +39,18 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   function moveHeadTo() {
     let newRot;
+    let oldRot;
     for (i = 0; i < snake.length; i++) {
-    info = checkRotation(i)
-    snake[i].x += info[0];
-    $("#" + i).css("left", snake[i].x)
-    snake[i].y += info[1];
-    $("#" + i).css("top", snake[i].y)
-    if(i > 0){
-      snake[i].rotation = newRot
-    }
-    newRot = snake[i].rotation
+      info = checkRotation(i)
+      snake[i].x += info[0];
+      $("#" + i).css("left", snake[i].x)
+      snake[i].y += info[1];
+      $("#" + i).css("top", snake[i].y)
+      newRot = snake[i].rotation;
+      if (i > 0) {
+        snake[i].rotation = oldRot
+      }
+      oldRot = newRot
     }
   }
   /* 
@@ -58,6 +59,7 @@ function runProgram() {
   */
   //  1 = right, 2 = down, 3 = left, 4 = up
   function newFrame() {
+    hasHitSnake();
     handleKeypress();
     hasHitWall();
     moveHeadTo()
@@ -115,11 +117,11 @@ function runProgram() {
     }
   }
   function updateApple() {
-    apple.x = Math.floor(Math.random() * 22) * 20;
+    apple.x = Math.floor(Math.random() * 21) * 20;
     $(".apple").css("left", apple.x);
-    apple.y = Math.floor(Math.random() * 22) * 20;
+    apple.y = Math.floor(Math.random() * 21) * 20;
     $(".apple").css("top", apple.y);
-    $("p").text(points);
+    $("#score").text("Score: " + points);
     makeSnakeSquare();
   }
 
@@ -127,9 +129,9 @@ function runProgram() {
     //  1 = right, 2 = down, 3 = left, 4 = up
     rot = checkRotation(points - 1);
     var newSquare = {
-      "x": snake[points-1].x - rot[0],
-      "y": snake[points-1].y - rot[1],
-      "rotation": snake[points-1].rotation
+      "x": snake[points - 1].x - rot[0],
+      "y": snake[points - 1].y - rot[1],
+      "rotation": snake[points - 1].rotation
     }
     snake.push(newSquare);
     $("<div class = part id =" + points + ">").appendTo("#board")
@@ -149,12 +151,29 @@ function runProgram() {
     }
   }
 
+  function hasHitSnake() {
+    for (i = 0; i < snake.length; i++) {
+      for (n = 0; n < snake.length; n++) {
+        if (n === i) {
+        } else if (snake[i].x === snake[n].x && snake[i].y === snake[n].y) {
+          endGame();
+        }
+      }
+    }
+  }
+
   function endGame() {
     // stop the interval timer
+    if (HighScore < points) {
+      HighScore = points;
+      points = 0;
+      $("#HS").text("High Score: " + HighScore)
+    }
     clearInterval(interval);
-
+    $(".part").remove();
+    $(".apple").remove();
     // turn off event handlers
-    $(document).off();
+    runProgram();
   }
 
 }

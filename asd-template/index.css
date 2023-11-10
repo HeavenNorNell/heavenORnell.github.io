@@ -33,7 +33,5 @@ body {
 }
 
 p {
-  position: absolute;
-  top: -15px;
-  left: 6px;
+color: white;
 }
