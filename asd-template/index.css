@@ -10,28 +10,33 @@ body {
   position: relative;
 }
 
+/* https://coolors.co/4c5b5c-ead2ac-997868-481d24-e072a4-91972a */
 .part {
-  background-color: rgb(99, 182, 131);
+  background-color: rgb(72, 29, 36);
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 100px;
+  /* left: 100px; */
   /* Uncomment if you want to set a "starting" position */
-  top: 100px;
+  /* top: 100px; */
   /* Uncomment if you want to set a "starting" position */
 }
 
+#id0 {
+  background-color:  rgb(145, 151, 42);
+}
+
 .apple {
-  background-color: red;
-  color: white;
+  background-color: rgb(18, 81, 19);
   width: 20px;
   height: 20px;
   position: absolute;
   left: 200px;
   top: 200px;
-  font-family: fantasy;
 }
 
 p {
 color: white;
+font-family: fantasy;
+font-size: 250;
 }

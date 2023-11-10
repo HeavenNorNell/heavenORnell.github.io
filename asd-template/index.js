@@ -16,7 +16,7 @@ function runProgram() {
   var points = 0;
   // Game Item Objects
 
-  $("<div class = part id = 0>").appendTo("#board")
+  $("<div class = part id = id0 id = head>").appendTo("#board")
   let snakeHead = {
     "x": 100,
     "y": 100,
@@ -37,15 +37,15 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function moveHeadTo() {
+  function moveSquareTo() {
     let newRot;
     let oldRot;
     for (i = 0; i < snake.length; i++) {
       info = checkRotation(i)
       snake[i].x += info[0];
-      $("#" + i).css("left", snake[i].x)
+      $("#id" + i).css("left", snake[i].x)
       snake[i].y += info[1];
-      $("#" + i).css("top", snake[i].y)
+      $("#id" + i).css("top", snake[i].y)
       newRot = snake[i].rotation;
       if (i > 0) {
         snake[i].rotation = oldRot
@@ -62,7 +62,7 @@ function runProgram() {
     hasHitSnake();
     handleKeypress();
     hasHitWall();
-    moveHeadTo()
+    moveSquareTo()
     hasHitApple();
     updateSpeed();
   }
@@ -134,7 +134,7 @@ function runProgram() {
       "rotation": snake[points - 1].rotation
     }
     snake.push(newSquare);
-    $("<div class = part id =" + points + ">").appendTo("#board")
+    $("<div class = part id = id" + points + ">").appendTo("#board")
     console.log(snake[0].y)
     console.log(snake)
   }
