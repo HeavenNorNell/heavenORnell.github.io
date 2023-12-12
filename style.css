@@ -1,116 +1,147 @@
 body {
     background-color: #00120b;
     font-family: rockwell;
-    margin:auto;
-    width:50%;
+    margin: auto;
+    width: 50%;
 }
+
 #center {
-    border:1px solid #afd2e9;
-    padding:50px;
-    height:3000px;
+    border: 1px solid #afd2e9;
+    padding: 50px;
+    height: 3000px;
     background: #afd2e9;
-    margin:auto;
-    width:75%;
+    margin: auto;
+    width: 75%;
 }
+
 #Intrests {
-    color: 	#b486ab;
+    color: #b486ab;
 }
+
 #TopBar {
-    color:#82667f;
+    color: #82667f;
 }
+
 .text {
-    position:relative;
-    left:25px;
-    top:-100px;
+    position: relative;
+    left: 25px;
+    top: -100px;
 }
-#LeafSheep{
+
+#LeafSheep {
     border: 6px solid #6da34d;
     width: 300px;
     height: 210px;
     background: #6da34d;
-    position:relative;
-    top:-310px;
-    
-    left:400px;
+    position: relative;
+    top: -310px;
+    left: 400px;
 }
-    h3{
-    position:relative;
-    top:-18px;
-    font-family:marker felt;
-    color:#00120b;
-}
-    h2{
-        font-size:20px;
-    }
-    h1{
-        font-size:30px;
 
-    }
-    #title {
-        position:relative;
-        left: 80px;
-    }
-    #gif {
-        position:relative;
-        top:-90px;
-        image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-        image-rendering: -moz-crisp-edges;          /* Firefox                        */
-        image-rendering: -o-crisp-edges;            /* Opera                          */
-        image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-        image-rendering: pixelated;                 /* Universal support since 2021   */
-        image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
-        -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */       
-    }
-nav{
-    color:#00120b;
-    position:relative;
-    left:25px;
+h3 {
+    position: relative;
+    top: -18px;
+    font-family: marker felt;
+    color: #00120b;
 }
+
+h2 {
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 30px;
+
+}
+
+#title {
+    position: relative;
+    left: 80px;
+}
+
+#gif {
+    position: relative;
+    top: -90px;
+    image-rendering: optimizeSpeed;
+    /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;
+    /* Firefox                        */
+    image-rendering: -o-crisp-edges;
+    /* Opera                          */
+    image-rendering: -webkit-optimize-contrast;
+    /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;
+    /* Universal support since 2021   */
+    image-rendering: optimize-contrast;
+    /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE8+                           */
+}
+
+nav {
+    color: #00120b;
+    position: relative;
+    left: 25px;
+}
+
 #secret {
-    position:relative;
-    top:2400px;
+    position: relative;
+    top: 2400px;
 }
-    #nav-ul {
-        list-style-image: none;
-        position:relative;
-        top:-100px;
-    }
-    .nav-li {
-        display: inline-block;
-        padding: 0 10px;
-    }
 
-    #portfolio {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    #portfolio li {
-        background: #b486ab;
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
+#nav-ul {
+    list-style-image: none;
+    position: relative;
+    top: -100px;
+}
 
-    #portfolio li:hover {
-        background: #6da34d;
-    }
-    #portfolio a {
-        text-decoration: none;
-        color: #454545;
-    }
-    #img {
-        position:relative;
-        top: -70px;
-        left:-40px;
-        image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-        image-rendering: -moz-crisp-edges;          /* Firefox                        */
-        image-rendering: -o-crisp-edges;            /* Opera                          */
-        image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-        image-rendering: pixelated;                 /* Universal support since 2021   */
-        image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
-        -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
-    }
-    #nav-ulP {
-        position:relative;
-        top:-150px;
-    }
+.nav-li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#portfolio li {
+    background: #b486ab;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+    background: #6da34d;
+}
+
+#portfolio a {
+    text-decoration: none;
+    color: #454545;
+}
+
+#img {
+    position: relative;
+    top: -70px;
+    left: -40px;
+    image-rendering: optimizeSpeed;
+    /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;
+    /* Firefox                        */
+    image-rendering: -o-crisp-edges;
+    /* Opera                          */
+    image-rendering: -webkit-optimize-contrast;
+    /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;
+    /* Universal support since 2021   */
+    image-rendering: optimize-contrast;
+    /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE8+                           */
+}
+
+#nav-ulP {
+    position: relative;
+    top: -150px;
+}
