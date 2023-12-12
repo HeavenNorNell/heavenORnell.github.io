@@ -1,147 +1,81 @@
 body {
-    background-color: #00120b;
+    background-color: #80CED7;
     font-family: rockwell;
     margin: auto;
     width: 50%;
 }
 
 #center {
-    border: 1px solid #afd2e9;
-    padding: 50px;
-    height: 3000px;
-    background: #afd2e9;
+    padding: 41px;
+    height: 4900px;
+    background: #FFD5FF;
     margin: auto;
-    width: 75%;
-}
-
-#Intrests {
-    color: #b486ab;
-}
-
-#TopBar {
-    color: #82667f;
-}
-
-.text {
+    width: 80%;
+    border-radius: 25px;
     position: relative;
-    left: 25px;
-    top: -100px;
+    top: 5px;
 }
 
-#LeafSheep {
-    border: 6px solid #6da34d;
-    width: 300px;
-    height: 210px;
-    background: #6da34d;
+
+#topBar {
+    margin: auto;
+    background-color: #FDF5BF;
+    padding: 41px;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    width: 80%;
+    border-radius: 25px;
     position: relative;
-    top: -310px;
-    left: 400px;
+    top: -7px;
 }
 
 h3 {
     position: relative;
-    top: -18px;
-    font-family: marker felt;
-    color: #00120b;
+    top: -10px;
+    font-size: 17px;
+    color: #FDF5BF;
+    background-color: #3FA7D6;
+    width: 410px;
+    padding: 15px;
+    border-radius: 15px;
 }
 
 h2 {
     font-size: 20px;
+    color: #3FA7D6;
 }
 
 h1 {
     font-size: 30px;
-
+    color: #3FA7D6;
 }
 
-#title {
-    position: relative;
-    left: 80px;
+ul {
+    color: #FDF5BF;
 }
 
-#gif {
-    position: relative;
-    top: -90px;
-    image-rendering: optimizeSpeed;
-    /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges;
-    /* Firefox                        */
-    image-rendering: -o-crisp-edges;
-    /* Opera                          */
-    image-rendering: -webkit-optimize-contrast;
-    /* Chrome (and eventually Safari) */
-    image-rendering: pixelated;
-    /* Universal support since 2021   */
-    image-rendering: optimize-contrast;
-    /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor;
-    /* IE8+                           */
+p {
+    color: #FDF5BF;
 }
 
-nav {
-    color: #00120b;
-    position: relative;
-    left: 25px;
+#stats {
+    background-color: #80CED7;
+}
+
+.bubble {
+    position: relative; 
+    top: -4px;
+    background-color: #92D1C3;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 20px;
+}
+
+.barrier {
+    padding: 10px;
 }
 
 #secret {
     position: relative;
-    top: 2400px;
-}
-
-#nav-ul {
-    list-style-image: none;
-    position: relative;
-    top: -100px;
-}
-
-.nav-li {
-    display: inline-block;
-    padding: 0 10px;
-}
-
-#portfolio {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#portfolio li {
-    background: #b486ab;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-#portfolio li:hover {
-    background: #6da34d;
-}
-
-#portfolio a {
-    text-decoration: none;
-    color: #454545;
-}
-
-#img {
-    position: relative;
-    top: -70px;
-    left: -40px;
-    image-rendering: optimizeSpeed;
-    /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges;
-    /* Firefox                        */
-    image-rendering: -o-crisp-edges;
-    /* Opera                          */
-    image-rendering: -webkit-optimize-contrast;
-    /* Chrome (and eventually Safari) */
-    image-rendering: pixelated;
-    /* Universal support since 2021   */
-    image-rendering: optimize-contrast;
-    /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor;
-    /* IE8+                           */
-}
-
-#nav-ulP {
-    position: relative;
-    top: -150px;
+    top: 1440px;
 }
