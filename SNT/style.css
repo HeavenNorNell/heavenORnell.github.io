@@ -63,7 +63,8 @@ p {
 }
 
 .bubble {
-    position: relative top: -4px;
+    position: relative; 
+    top: -4px;
     background-color: #92D1C3;
     padding: 10px;
     padding-left: 30px;
