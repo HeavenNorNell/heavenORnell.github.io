@@ -7,7 +7,7 @@ body {
 
 #center {
     padding: 41px;
-    height: 3900px;
+    height: 4900px;
     background: #FFD5FF;
     margin: auto;
     width: 80%;
@@ -76,5 +76,5 @@ p {
 
 #secret {
     position: relative;
-    top: 1500px;
+    top: 1440px;
 }
