@@ -1,12 +1,13 @@
 body {
-  background-color: rgb(18, 63, 95);
+  background-color: #FDF5BF;
 }
 
 #board {
   width: 440px;
   height: 440px;
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid #80CED7;
+  border-width: 4px;
+  background-color: #FDF5BF;
   position: relative;
 }
 
@@ -23,7 +24,7 @@ body {
 }
 
 #id0 {
-  background-color:  rgb(145, 151, 42);
+  background-color:  #3FA7D6;
 }
 
 .apple {
