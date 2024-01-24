@@ -83,7 +83,11 @@
       paddlePlayer.y = canvas.height - heightPlayer;
     }
 
-    // AI movement: CPU follows ball //
+
+    // This code asks whether the CPU paddle’s center is within 14 pixels of the ball. 
+    // This essentially checks the CPU’s entire “hitbox.”
+    // If 14 were higher, the CPU would attempt to get its center closer to the ball.
+    // If it were lower, the CPU would miss the ball by a margin equal to the value’s increase.
     if ((paddleCPU.y + midCPU) < (ball.y - 14)) {
       paddleCPU.y += paddleCPU.yVelocity;
     } else if ((paddleCPU.y + midCPU) > (ball.y + 14)) {
@@ -91,7 +95,7 @@
     }
 
     // TODO 1: bounce the ball off the top
-
+    wallCollide();
 
     // TODO 2: bounce the ball off the bottom
 
@@ -100,6 +104,27 @@
 
 
   }
+
+  function wallCollide() {
+    if (ball.y + ball.radius >= canvas.height){
+      ball.yVelocity *= -1;
+    }
+    if (ball.y - ball.radius <= 0){
+      ball.yVelocity *= -1;
+    }
+  }
+
+
+  function padCollide(pad) {
+    if ((pad.y + midCPU) < (ball.y - 14) || (paddleCPU.y + midCPU) > (ball.y + 14) ){
+      ball.yVelocity *= -1;
+    }
+    if (ball.y - ball.radius <= 0){
+      ball.yVelocity *= -1;
+    }
+  }
+
+
 
   // helper function that wraps the draw.rect function for easy paddle making
   function createPaddle({ width = 20, height = 100, x = 0, y = 0, color = '#CCC' } = {}) {
