@@ -25,7 +25,8 @@
   const
     paddlePlayer = createPaddle(),
     paddleCPU = createPaddle({ x: canvas.width - 20, y: canvas.height - 100 }),
-    ball = draw.circle(20, '#CCC');
+    ball = draw.circle(20, '#CCC'),
+    score = draw.textfield("Points: 0", "100px Arial", "#666666","center", "center", 100, 100);
 
   // set initial properties for the paddles 
   paddlePlayer.yVelocity = 0;
@@ -96,6 +97,8 @@
 
     // TODO 1: bounce the ball off the top
     wallCollide();
+    padCollide(paddlePlayer, -2);
+    padCollide(paddleCPU, 1 );
 
     // TODO 2: bounce the ball off the bottom
 
@@ -104,6 +107,18 @@
 
 
   }
+
+function padCollide(pad, drection) {
+  if ((ball.x + (ball.radius * drection) === pad.x)){
+    if ((pad.y <= ball.y) && (pad.y + pad.height >= ball.y)){
+    ball.xVelocity *= -1;
+    } else {
+      endGame();
+    }
+    }
+}
+
+
 
   function wallCollide() {
     if (ball.y + ball.radius >= canvas.height){
@@ -115,15 +130,13 @@
   }
 
 
-  function padCollide(pad) {
-    if ((pad.y + midCPU) < (ball.y - 14) || (paddleCPU.y + midCPU) > (ball.y + 14) ){
-      ball.yVelocity *= -1;
-    }
-    if (ball.y - ball.radius <= 0){
-      ball.yVelocity *= -1;
-    }
-  }
 
+function endGame() {
+  ball.x = canvas.width / 2;
+  ball.y = canvas.height / 2;
+  ball.xVelocity = 5;
+  ball.yVelocity = 5;
+}
 
 
   // helper function that wraps the draw.rect function for easy paddle making
@@ -131,6 +144,8 @@
     const paddle = draw.rect(width, height, color);
     paddle.x = x;
     paddle.y = y;
+    paddle.top = y;
+    paddle.bottom = y + height;
     return paddle;
   }
 
