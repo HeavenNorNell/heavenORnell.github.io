@@ -49,9 +49,9 @@
   // when an Arrow key is pressed down, set the paddle in motion
   function onKeyDown(event) {
     if (event.key === 'ArrowUp') {
-      paddlePlayer.yVelocity = -5;
+      paddlePlayer.yVelocity = -10;
     } else if (event.key === 'ArrowDown') {
-      paddlePlayer.yVelocity = 5;
+      paddlePlayer.yVelocity = 10;
     }
   }
 
@@ -110,7 +110,7 @@
   }
 
   function padCollide(pad, drection) {
-    if (ball.x + (ball.radius * drection) === pad.x * drection) {
+    if (ball.x + (ball.radius * drection) === pad.x * drection || ball.x < pad.x * -drection) {
       if ((pad.y <= ball.y - 14) && (pad.y + pad.height >= ball.y + 14)) {
         ball.xVelocity *= -2;
         createjs.Sound.play("hit");
