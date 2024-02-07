@@ -23,7 +23,7 @@
       stage = new createjs.Stage(canvas);
     }
 
-    createjs.Ticker.framerate = 60;
+    createjs.Ticker.framerate = 80;
 
     let
       tickerHandler,

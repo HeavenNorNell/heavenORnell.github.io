@@ -1,4 +1,4 @@
-(function(window, createjs, opspark, _) {
+(function (window, createjs, opspark, _) {
 
   // Variable declarations for libraries and the game engine
   const
@@ -6,8 +6,9 @@
     physikz = opspark.racket.physikz, // library for defining physics properties like velocity
     engine = opspark.V6().activateResize(), // game engine for actively rendering + running the game's mechanics
     canvas = engine.getCanvas(), // object for referencing the height / width of the window
-    stage = engine.getStage(); // object to hold all visual components
-
+    stage = engine.getStage(), // object to hold all visual components
+    points = draw.textfield("Score = 0", "20px Cambria", "#666666", "center", "top", 50, 950);
+  let scr = 0;
   // load some sounds for the demo - play sounds using: createjs.Sound.play("wall");
   createjs.Sound.on("fileload", handleLoadComplete);
   createjs.Sound.alternateExtensions = ["mp3"];
@@ -26,11 +27,11 @@
     paddlePlayer = createPaddle(),
     paddleCPU = createPaddle({ x: canvas.width - 20, y: canvas.height - 100 }),
     ball = draw.circle(20, '#CCC'),
-    score = draw.textfield("Points: 0", "100px Arial", "#666666","center", "center", 100, 100);
+    score = draw.textfield("Points: 0", "100px Arial", "#666666", "center", "center", 100, 100);
 
   // set initial properties for the paddles 
   paddlePlayer.yVelocity = 0;
-  paddleCPU.yVelocity = 6;
+  paddleCPU.yVelocity = 10;
 
   // set initial properties for the ball
   ball.x = canvas.width / 2;
@@ -39,7 +40,7 @@
   ball.yVelocity = 5;
 
   // add the paddles and the ball to the view
-  stage.addChild(paddlePlayer, paddleCPU, ball);
+  stage.addChild(paddlePlayer, paddleCPU, ball, points);
 
 
   document.addEventListener('keyup', onKeyUp);
@@ -97,8 +98,8 @@
 
     // TODO 1: bounce the ball off the top
     wallCollide();
-    padCollide(paddlePlayer, -2);
-    padCollide(paddleCPU, 1 );
+    padCollide(paddlePlayer, -1);
+    padCollide(paddleCPU, 1);
 
     // TODO 2: bounce the ball off the bottom
 
@@ -108,35 +109,41 @@
 
   }
 
-function padCollide(pad, drection) {
-  if ((ball.x + (ball.radius * drection) === pad.x)){
-    if ((pad.y <= ball.y) && (pad.y + pad.height >= ball.y)){
-    ball.xVelocity *= -1;
-    } else {
-      endGame();
+  function padCollide(pad, drection) {
+    if (ball.x + (ball.radius * drection) === pad.x * drection) {
+      if ((pad.y <= ball.y - 14) && (pad.y + pad.height >= ball.y + 14)) {
+        ball.xVelocity *= -2;
+        createjs.Sound.play("hit");
+      } else {
+        endGame(drection);
+      }
     }
-    }
-}
-
+  }
 
 
   function wallCollide() {
-    if (ball.y + ball.radius >= canvas.height){
+    if (ball.y + ball.radius >= canvas.height) {
       ball.yVelocity *= -1;
+      createjs.Sound.play("wall");
     }
-    if (ball.y - ball.radius <= 0){
+    if (ball.y - ball.radius <= 0) {
       ball.yVelocity *= -1;
+      createjs.Sound.play("wall");
     }
   }
 
 
 
-function endGame() {
-  ball.x = canvas.width / 2;
-  ball.y = canvas.height / 2;
-  ball.xVelocity = 5;
-  ball.yVelocity = 5;
-}
+  function endGame(pad) {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.xVelocity = 5;
+    ball.yVelocity = 5;
+    if (pad === 1) {
+      scr += 1;
+      points.text = "Score = " + scr;
+    }
+  }
 
 
   // helper function that wraps the draw.rect function for easy paddle making
