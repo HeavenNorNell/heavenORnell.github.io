@@ -114,9 +114,15 @@
       if ((pad.y <= ball.y - 14) && (pad.y + pad.height >= ball.y + 14)) {
         ball.xVelocity *= -2;
         createjs.Sound.play("hit");
+        if (drection === -1) {
+          scr += 1;
+          points.text = "Score = " + scr;
+        }
       } else {
-        endGame(drection);
+        endGame();
       }
+     } else if (ball.x < pad.x * -drection) {
+        endGame();
     }
   }
 
@@ -134,15 +140,11 @@
 
 
 
-  function endGame(pad) {
+  function endGame() {
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
     ball.xVelocity = 5;
     ball.yVelocity = 5;
-    if (pad === 1) {
-      scr += 1;
-      points.text = "Score = " + scr;
-    }
   }
 
 
