@@ -1,81 +1,121 @@
 body {
-    background-color: #80CED7;
-    font-family: rockwell;
-    margin: auto;
-    width: 50%;
+  background-color: #80ced7;
+  font-family: rockwell;
+  margin: auto;
+  width: 50%;
 }
 
 #center {
-    padding: 41px;
-    height: 4900px;
-    background: #FFD5FF;
-    margin: auto;
-    width: 80%;
-    border-radius: 25px;
-    position: relative;
-    top: 5px;
+  padding: 41px;
+  height: 4900px;
+  background: #ffd5ff;
+  margin: auto;
+  width: 80%;
+  border-radius: 25px;
+  position: relative;
+  top: 5px;
 }
-
 
 #topBar {
-    margin: auto;
-    background-color: #FDF5BF;
-    padding: 41px;
-    padding-top: 8px;
-    padding-bottom: 12px;
-    width: 80%;
-    border-radius: 25px;
-    position: relative;
-    top: -7px;
+  margin: auto;
+  background-color: #fdf5bf;
+  padding: 41px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  width: 80%;
+  border-radius: 25px;
+  position: relative;
+  top: -7px;
 }
 
-h3 {
-    position: relative;
-    top: -10px;
-    font-size: 17px;
-    color: #FDF5BF;
-    background-color: #3FA7D6;
-    width: 410px;
-    padding: 15px;
-    border-radius: 15px;
+.mini {
+  position: relative;
+  top: -10px;
+  font-size: 17px;
+  color: #fdf5bf;
+  background-color: #3fa7d6;
+  width: 410px;
+  padding: 22px;
+  padding-left: 50px;
+  border-radius: 15px;
 }
 
 h2 {
-    font-size: 20px;
-    color: #3FA7D6;
+  font-size: 20px;
+  color: #3fa7d6;
 }
 
 h1 {
-    font-size: 30px;
-    color: #3FA7D6;
+  font-size: 30px;
+  color: #3fa7d6;
 }
 
 ul {
-    color: #FDF5BF;
+  color: #fdf5bf;
+}
+
+li {
+  color: #fdf5bf;
 }
 
 p {
-    color: #FDF5BF;
+  color: #fdf5bf;
 }
 
 #stats {
-    background-color: #80CED7;
+  background-color: #80ced7;
 }
 
 .bubble {
-    position: relative; 
-    top: -4px;
-    background-color: #92D1C3;
-    padding: 10px;
-    padding-left: 30px;
-    border-radius: 20px;
+  position: relative;
+  top: -4px;
+  background-color: #92d1c3;
+  padding: 10px;
+  padding-left: 30px;
+  border-radius: 20px;
 }
 
 .barrier {
-    padding: 10px;
+  padding: 10px;
 }
 
 #secret {
-    position: relative;
-    top: 1440px;
+  position: relative;
+  top: 1440px;
+}
+
+#gif {
+  position: relative;
+  top: -90px;
+  image-rendering: optimizeSpeed;
+  /* STOP SMOOTHING, GIVE ME SPEED  */
+  image-rendering: -moz-crisp-edges;
+  /* Firefox                        */
+  image-rendering: -o-crisp-edges;
+  /* Opera                          */
+  image-rendering: -webkit-optimize-contrast;
+  /* Chrome (and eventually Safari) */
+  image-rendering: pixelated;
+  /* Universal support since 2021   */
+  image-rendering: optimize-contrast;
+  /* CSS3 Proposed                  */
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE8+                           */
+}
+
+#img {
+  image-rendering: optimizeSpeed;
+  /* STOP SMOOTHING, GIVE ME SPEED  */
+  image-rendering: -moz-crisp-edges;
+  /* Firefox                        */
+  image-rendering: -o-crisp-edges;
+  /* Opera                          */
+  image-rendering: -webkit-optimize-contrast;
+  /* Chrome (and eventually Safari) */
+  image-rendering: pixelated;
+  /* Universal support since 2021   */
+  image-rendering: optimize-contrast;
+  /* CSS3 Proposed                  */
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE8+                           */
 }
