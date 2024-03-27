@@ -1,0 +1,23 @@
+{
+  "name": "dreamscape",
+  "main": "index.js",
+  "homepage": "https://github.com/heavenORnell/dreamscape",
+  "description": "gaming library",
+  "keywords": [
+    "gaming"
+  ],
+  "authors": [
+    "heavenORnell"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
