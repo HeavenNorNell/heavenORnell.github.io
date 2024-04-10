@@ -52,6 +52,11 @@
             const minDis = bodyA.radius + bodyB.radius
             const distance = distanceOBJ.disT - minDis;
 
+            // drag
+            
+            bodyA.velocityX *= 0.9995;
+            bodyA.velocityY *= 0.9995;
+
             // TODO 2: Do collision check: how do we know if bodies are colliding?
             if (distance <= 0) {
               console.log("hit!");
@@ -62,19 +67,17 @@
               const springToY = Math.sin(angle) * minDis + bodyA.y;
 
               // TODO 4: Calculate acceleration to spring-to point, factor in dampeningForce
-              const accelerationOnXB = (springToX - bodyB.x) * dampeningForce;
-              const accelerationOnYB = (springToY - bodyB.y) * dampeningForce;
+              const accelerationOnX = (springToX - bodyB.x) * dampeningForce;
+              const accelerationOnY = (springToY - bodyB.y) * dampeningForce;
 
               // TODO 5: Apply acceleration to bodyB
-              bodyB.velocityX += accelerationOnXB;
-              bodyB.velocityY += accelerationOnYB;
+              bodyB.velocityX += accelerationOnX;
+              bodyB.velocityY += accelerationOnY;
 
               // TODO 6: Apply inverse acceleration to bodyA
-              const accelerationOnXA = (springToX - bodyA.x) * dampeningForce;
-              const accelerationOnYA = (springToY - bodyA.y) * dampeningForce;
 
-              bodyA.velocityX -= accelerationOnXA;
-              bodyA.velocityY -= accelerationOnYA;
+              bodyA.velocityX -= accelerationOnX;
+              bodyA.velocityY -= accelerationOnY;
             }
           }
         }

@@ -11,7 +11,7 @@
     playerOne = opspark.shipManager(assets, controls, messenger),
     space = opspark.space(messenger);
 
-  orbManager.spawn(15);
+  orbManager.spawn(25);
   playerOne.spawn();
   
   controls.activate();
