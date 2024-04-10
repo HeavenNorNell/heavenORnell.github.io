@@ -1,0 +1,33 @@
+{
+  "name": "dreamscape",
+  "main": "index.js",
+  "homepage": "https://github.com/heavenORnell/dreamscape",
+  "description": "gaming library",
+  "keywords": [
+    "gaming"
+  ],
+  "authors": [
+    "heavenORnell"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "1.1.4",
+  "_release": "1.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.4",
+    "commit": "ca6c91781eb766e2dc8548074656a6665b802195"
+  },
+  "_source": "https://github.com/heavenORnell/dreamscape.git",
+  "_target": "^1.1.3",
+  "_originalSource": "https://github.com/heavenORnell/dreamscape.git"
+}
