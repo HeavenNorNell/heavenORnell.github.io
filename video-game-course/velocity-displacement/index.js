@@ -51,12 +51,17 @@
     .addTickHandlers(space.update)
     .activateTick();
 
+  let arrowLeft = false;
+  let arrowRight = false;
+
   // listen for user pressing keys down //
   document.onkeydown = function(event) {
     /*
      * Up arrow can be pressed in combo with other keys.
      * propulsion of 0.1 is set when ArrowUp is pressed.
      */
+
+
     if (event.key === 'ArrowUp') {
       ship.propulsion = 0.1;
     }
@@ -66,10 +71,16 @@
      * same time. rotationalVelocity is set to -5 when
      * ArrowLeft is pressed, and 5 when its ArrowRight.
      */
+    if (event.key === 'ArrowLeft' && event.key === 'ArrowRight') {
+      ship.rotationalVelocity = 0;
+    } 
     if (event.key === 'ArrowLeft') {
       ship.rotationalVelocity = -5;
-    } else if (event.key === 'ArrowRight') {
+      arrowLeft = true;
+    } 
+    if (event.key === 'ArrowRight') {
       ship.rotationalVelocity = 5;
+      arrowRight = true;
     }
   };
 
@@ -81,9 +92,22 @@
     }
 
     if (event.key === 'ArrowLeft') {
-      ship.rotationalVelocity = 0;
-    } else if (event.key === 'ArrowRight') {
-      ship.rotationalVelocity = 0;
+      arrowLeft = false;
+      if (arrowRight === true) {
+        ship.rotationalVelocity = 5;
+      } else {
+        ship.rotationalVelocity = 0;
+        
+      }
+    } 
+    if (event.key === 'ArrowRight') {
+      arrowRight = false;
+      if (arrowLeft === true) {
+        ship.rotationalVelocity = -5;
+      } else {
+        ship.rotationalVelocity = 0;
+        
+      }
     }
   };
   

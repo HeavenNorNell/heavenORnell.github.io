@@ -34,7 +34,9 @@
         },
         update(event) {
           // left and right arrows cannot be pressed at the same time //
-          if (controls.isActive(keyMap.LEFT)) {
+          if (controls.isActive(keyMap.LEFT) && controls.isActive(keyMap.RIGHT)) {
+            ship.rotationalVelocity = 0; 
+          } else if (controls.isActive(keyMap.LEFT)) {
             ship.rotationalVelocity = -5;
           } else if (controls.isActive(keyMap.RIGHT)) {
             ship.rotationalVelocity = 5;
