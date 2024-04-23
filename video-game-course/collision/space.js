@@ -48,21 +48,22 @@
             const bodyB = active[j];
 
             // TODO 1: Calculate hit test components
-            const distanceOBJ = dreamscape.phyz.calculateDistance(bodyA, bodyB);
-            const minDis = bodyA.radius + bodyB.radius
-            const distance = distanceOBJ.disT - minDis;
+            const {disT, disX, disY} = dreamscape.phyz.calculateDistance(bodyA, bodyB);
+            const minDis = bodyA.radius + bodyB.radius;
+            const distance = disT - minDis;
 
+            // console.log(distanceOBJ)
             // drag
-            
-            bodyA.velocityX *= 0.9995;
-            bodyA.velocityY *= 0.9995;
+
+            // bodyA.velocityX *= 0.9995;
+            // bodyA.velocityY *= 0.9995;
 
             // TODO 2: Do collision check: how do we know if bodies are colliding?
             if (distance <= 0) {
               console.log("hit!");
 
               // TODO 3: Calculate springToX and springToY
-              const angle = Math.atan2(distanceOBJ.disY, distanceOBJ.disX);
+              const angle = Math.atan2(disY, disX);
               const springToX = Math.cos(angle) * minDis + bodyA.x;
               const springToY = Math.sin(angle) * minDis + bodyA.y;
 
