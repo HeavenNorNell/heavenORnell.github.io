@@ -55,11 +55,12 @@
 
       // return the ship manager api //
       return {
-        spawn(color = '#4286f4') {
+        spawn(id, color = '#4286f4') {
           if(ship) throw new Error('Player is already spawned!');
           // only one ship is managed by the module //
           ship = assets.makeShip(color);
           ship.handleCollision = handleCollisionShip;
+          ship.id = id;
           messenger.dispatch({ type: 'SPAWN', bodies: [ship], source: 'ship' });
           return this;
         },
@@ -70,6 +71,9 @@
         },
         update(event) {
           // left and right arrows cannot be pressed at the same time //
+          let turn = 1;
+          // lock players from moving if it's not their turn
+          if (turn === ship.id){
           if (controls.isActive(keyMap.LEFT)) {
             ship.rotationalVelocity = -5;
           } else if (controls.isActive(keyMap.RIGHT)) {
@@ -86,6 +90,8 @@
             emitter.stop();
             ship.propulsion = 0;
           }
+          }
+
           
           /*
            * Space key can be pressed in combo with other keys.

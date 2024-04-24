@@ -23,7 +23,7 @@
           opspark.playa.projectile(fx, assets, messenger),
           fx.makePlayerEmitter(), 
           level)
-          .spawn(),
+          .spawn(1),
           
         shipTwo = opspark.playa.ship(
           assets, 
@@ -33,7 +33,7 @@
           fx.makePlayerEmitter(), 
           level)
           .setKeyMap({ UP: controls.KEYS.W, LEFT: controls.KEYS.A, RIGHT: controls.KEYS.D, FIRE: controls.KEYS.SHIFT_LEFT })
-          .spawn('#f44242'),
+          .spawn(2, '#f44242'),
           
         orb = opspark.playa.orb(assets, fx, messenger)
           .spawn(25);

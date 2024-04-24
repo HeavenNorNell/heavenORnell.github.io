@@ -37,6 +37,10 @@
           // ask the body to update its velocity //
           body.update(event);
 
+          // drag
+          body.velocityX *= 0.9;
+          body.velocityY *= 0.9;
+
           // update the body's position based on its new velocity //
           phyz.updatePosition(body);
         });
@@ -48,7 +52,6 @@
 
           // compare all other bodies to bodyA, excluding bodyA: note j > -1 //
           hit: for (let j = i - 1; j > -1; j--) {
-
             const bodyB = active[j],
               distanceAttributes = getDistanceAttributes(bodyA, bodyB),
               hitResult = doRadiiHitTest(
@@ -63,7 +66,6 @@
                 phyz.getImpactProperties(bodyA, bodyB)
               );
             }
-
           }
         }
       },
@@ -112,14 +114,14 @@
     //   springToX = Math.cos(angle) * minimumDistance + bodyA.x,
     //   springToY = Math.sin(angle) * minimumDistance + bodyA.y;
 
-    const dampeningForce = 0.05,
+    const dampeningForce = 0.75,
       ax = (springToX - bodyB.x) * dampeningForce,
       ay = (springToY - bodyB.y) * dampeningForce;
 
-    bodyA.velocityX -= ax;
-    bodyA.velocityY -= ay;
-    bodyB.velocityX += ax;
-    bodyB.velocityY += ay;
+    bodyA.velocityX += ax;
+    bodyA.velocityY += ay;
+    bodyB.velocityX -= ax;
+    bodyB.velocityY -= ay;
 
     // each body should then handle the impact //
     bodyA.handleCollision(impact, bodyB);
