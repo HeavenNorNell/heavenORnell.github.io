@@ -44,27 +44,41 @@
           // update the body's position based on its new velocity //
           phyz.updatePosition(body);
         });
-
+        // the touching array prevents doubled collisions by storing the names of each object that is still touching another object. Objects are removed when they stop touching
+        let touching = [];
         // loop backwards over each body in the space: note i > 0 //
         for (let i = active.length - 1; i > 0; i--) {
-          // pull out each body one by one //
-          const bodyA = active[i];
+          //if buffer contains the current "body a," a collision will not activate
+          if (!touching.includes(active[i])) {
+            // pull out each body one by one //
+            const bodyA = active[i];
 
-          // compare all other bodies to bodyA, excluding bodyA: note j > -1 //
-          hit: for (let j = i - 1; j > -1; j--) {
-            const bodyB = active[j],
-              distanceAttributes = getDistanceAttributes(bodyA, bodyB),
-              hitResult = doRadiiHitTest(
-                distanceAttributes.distance,
-                bodyA,
-                bodyB
-              );
-            if (hitResult.isHit) {
-              handleCollision(
-                distanceAttributes,
-                hitResult,
-                phyz.getImpactProperties(bodyA, bodyB)
-              );
+            // compare all other bodies to bodyA, excluding bodyA: note j > -1 //
+            hit: for (let j = i - 1; j > -1; j--) {
+              const bodyB = active[j],
+                distanceAttributes = getDistanceAttributes(bodyA, bodyB),
+                hitResult = doRadiiHitTest(
+                  distanceAttributes.distance,
+                  bodyA,
+                  bodyB
+                );
+              if (!touching.includes(active[j])) {
+                if (hitResult.isHit) {
+                  handleCollision(
+                    distanceAttributes,
+                    hitResult,
+                    phyz.getImpactProperties(bodyA, bodyB)
+                  );
+                  touching.push(active[i]);
+                  touching.push(active[j]);
+                }
+              } else {
+                if (!hitResult.isHit) {
+                  const index = touching.indexOf(active[j]);
+                  const x = touching.splice(index, 1);
+                  console.log(active[j]);
+                }
+              }
             }
           }
         }
