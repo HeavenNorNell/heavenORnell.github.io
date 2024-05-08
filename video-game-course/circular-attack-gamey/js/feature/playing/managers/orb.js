@@ -59,27 +59,27 @@
       }
       
       function handleCollision(impact, body) {
-        // don't handle collisions between orbs //
-        if (body.type === this.type) return;
+        // // don't handle collisions between orbs //
+        // if (body.type === this.type) return;
 
-        /*
-         * Because the explosion is async, the orb may exist
-         * but have already exploded, so check first to see 
-         * if it has integrity before running check to exlode.
-         */
-        if (this.integrity > 0) {
-          console.log(impact);
-          this.integrity -= impact;
-          if (this.integrity <= 0) {
-            fx
-              .makeEmitter(2, 3, "rgba(214, 36, 84, 0.2)", null, [
-                new Proton.RandomDrift(5, 0, .35)
-              ])
-              .emit({ x: this.x, y: this.y }, 0.5);
-            pool.recycle(this);
-            messenger.dispatch({ type: 'EXPLOSION', source: 'orb', target: this, incoming: body });
-          }
-        }
+        // /*
+        //  * Because the explosion is async, the orb may exist
+        //  * but have already exploded, so check first to see 
+        //  * if it has integrity before running check to exlode.
+        //  */
+        // if (this.integrity > 0) {
+        //   console.log(impact);
+        //   this.integrity -= impact;
+        //   if (this.integrity <= 0) {
+        //     fx
+        //       .makeEmitter(2, 3, "rgba(214, 36, 84, 0.2)", null, [
+        //         new Proton.RandomDrift(5, 0, .35)
+        //       ])
+        //       .emit({ x: this.x, y: this.y }, 0.5);
+        //     pool.recycle(this);
+        //     messenger.dispatch({ type: 'EXPLOSION', source: 'orb', target: this, incoming: body });
+        //   }
+        // }
       }
 
       // return orb manager api //

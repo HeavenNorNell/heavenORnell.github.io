@@ -13,11 +13,12 @@
         LEFT: controls.KEYS.LEFT,
         RIGHT: controls.KEYS.RIGHT,
         FIRE: controls.KEYS.SPACE,
+        PASS: controls.KEYS.ENTER,
       };
       let ship, fire;
-      // turn is a variable that can have a value of 1 or 2. Based on its value, one or the other player's controls will be locked. Turn changes whenever a player scedes control
-      let turn = 1;
-      setRateOfFire(level.rateOfFire);
+      // turn is a variable that can have a value of 1 or 2. Based on its value, one or the other player's controls will be locked. Turn changes whenever a player runs out of movement
+      window.turn = 1;
+      setRateOfFire(5);
 
       function explode() {
         let i, id;
@@ -51,7 +52,6 @@
       function handleCollisionShip(impact) {
         // if (this.integrity > 0) {
         //   this.integrity -= impact;
-        //   messenger.dispatch({ type: 'DAMAGE', source: 'ship', target: this });
         //   if (this.integrity <= 0) {
         //     explode();
         //     messenger.dispatch({ type: 'EXPLOSION', source: 'ship', target: this });
@@ -61,13 +61,13 @@
 
       // return the ship manager api //
       return {
-        spawn(id, color = "#4286f4") {
+        spawn(ide, color = "#4286f4") {
           if (ship) throw new Error("Player is already spawned!");
           // only one ship is managed by the module //
           ship = assets.makeShip(color);
           ship.handleCollision = handleCollisionShip;
-          ship.id = id;
-          ship.movement = 100;
+          ship.id = ide;
+          ship.movement = 1;
           messenger.dispatch({ type: "SPAWN", bodies: [ship], source: "ship" });
           return this;
         },
@@ -78,8 +78,8 @@
         },
         update(event) {
           // left and right arrows cannot be pressed at the same time //
-
           // lock players from moving if it's not their turn
+
           if (turn === ship.id) {
             if (controls.isActive(keyMap.LEFT)) {
               ship.rotationalVelocity = -5;
@@ -90,24 +90,41 @@
             }
 
             // up arrow can be pressed in combo with other keys //
-            if (controls.isActive(keyMap.UP)) {
-              emitter.emit(ship.getExhaustPoint());
-              ship.propulsion = 0.1;
-              ship.movement--;
-              messenger.dispatch({ type: 'DAMAGE', source: 'ship', target: this });
-            } else {
+            if (ship.movement < 0) {
+              window.turn *= -1;
               emitter.stop();
               ship.propulsion = 0;
+              ship.movement = 1;
+              ship.rotationalVelocity = 0;
+              messenger.dispatch({
+                type: "DAMAGE",
+                source: "ship",
+                target: this,
+              });
+            } else {
+              if (controls.isActive(keyMap.UP)) {
+                emitter.emit(ship.getExhaustPoint());
+                ship.propulsion = 0.1;
+                ship.movement -= 0.003;
+                messenger.dispatch({
+                  type: "DAMAGE",
+                  source: "ship",
+                  target: this,
+                });
+              } else {
+                emitter.stop();
+                ship.propulsion = 0;
+              }
             }
-          }
 
-          /*
-           * Space key can be pressed in combo with other keys.
-           * Throttle the rateOfFire using _.throttle based on
-           * level.rateOfFire.
-           */
-          if (controls.isActive(keyMap.FIRE)) {
-            fire(ship);
+            /*
+             * Space key can be pressed in combo with other keys.
+             * Throttle the rateOfFire using _.throttle based on
+             * level.rateOfFire.
+             */
+            if (controls.isActive(keyMap.FIRE)) {
+              fire(ship);
+            }
           }
         },
       };

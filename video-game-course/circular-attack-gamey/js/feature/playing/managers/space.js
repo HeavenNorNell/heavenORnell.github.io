@@ -64,11 +64,28 @@
                 );
               if (!touching.includes(active[j])) {
                 if (hitResult.isHit) {
-                  handleCollision(
-                    distanceAttributes,
-                    hitResult,
-                    phyz.getImpactProperties(bodyA, bodyB)
-                  );
+                  if (
+                    (bodyA.type === "projectile" && bodyB.type === "ship") ||
+                    (bodyA.type === "ship" && bodyB.type === "projectile")
+                  ) {
+                                explode();
+                    messenger.dispatch({
+                      type: "EXPLOSION",
+                      source: "ship",
+                      target: this,
+                    });
+                  }
+                  else if (
+                    bodyA.type === "projectile" ||
+                    bodyB.type === "projectile"
+                  ) {
+                  } else {
+                    handleCollision(
+                      distanceAttributes,
+                      hitResult,
+                      phyz.getImpactProperties(bodyA, bodyB)
+                    );
+                  }
                   touching.push(active[i]);
                   touching.push(active[j]);
                 }

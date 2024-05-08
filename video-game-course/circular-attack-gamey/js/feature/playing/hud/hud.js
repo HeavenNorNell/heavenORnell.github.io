@@ -91,7 +91,6 @@
       messenger.on("DAMAGE", onDamage);
       function onDamage(event) {
           hud.setValue(ship.movement);
-          console.log("yey");
       }
 
       return hud;
