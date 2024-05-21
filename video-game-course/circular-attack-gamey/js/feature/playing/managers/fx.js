@@ -18,7 +18,7 @@
 
       function makeEmitter(radiusMin, radiusMax, color, velocity, behaviours) {
         const
-          protonEmitter = makeProtonEmitter(radiusMin, radiusMax, color, velocity, behaviours),
+          protonEmitter = makeProtonEmitter(radiusMin, radiusMax, '#26e9f0', velocity, behaviours),
           emitter = {
             protonEmitter,
 
@@ -49,7 +49,7 @@
         emtr.addInitialize(new Proton.Radius(radiusMin || 2, radiusMax || 4));
         emtr.addInitialize(new Proton.Life(0.5, 0.5));
         emtr.addBehaviour(new Proton.Collision(emtr));
-        emtr.addBehaviour(new Proton.Color(color || "rgba(0, 0, 0, 0.2)"));
+        emtr.addBehaviour(new Proton.Color(color || "'#26e9f0'"));
 
         if (behaviours) {
           behaviours.forEach(function(behaviour) {

@@ -44,14 +44,14 @@
       const txtScore = draw.textfield(
           "Movement:",
           "19px Arial",
-          "#666",
+          "#26e9f0",
           "left"
         ),
         integrity = new createjs.Container(),
-        background = draw.rect(104, 20, "#CCC"),
+        background = draw.rect(104, 20, "#242424"),
         integrityMeter = draw.rect(100, 16, ship.color || "#3333CC");
 
-      draw.rect(102, 18, "#FFF", null, null, 1, 1, background);
+      draw.rect(102, 18, "#242424", null, null, 1, 1, background);
 
       // add all view components to their containers in the correct order //
       integrity.addChild(background, integrityMeter);

@@ -68,12 +68,8 @@
                     (bodyA.type === "projectile" && bodyB.type === "ship") ||
                     (bodyA.type === "ship" && bodyB.type === "projectile")
                   ) {
-                                explode();
-                    messenger.dispatch({
-                      type: "EXPLOSION",
-                      source: "ship",
-                      target: this,
-                    });
+                    bodyA.handleCollision(10, bodyB);
+                    bodyB.handleCollision(10, bodyA);
                   }
                   else if (
                     bodyA.type === "projectile" ||
@@ -155,7 +151,6 @@
     bodyB.velocityY -= ay;
 
     // each body should then handle the impact //
-    bodyA.handleCollision(impact, bodyB);
-    bodyB.handleCollision(impact, bodyA);
+
   }
 })(window, window.opspark, window._);

@@ -21,8 +21,9 @@
       
     // create view components here //
     const
-      textfield = draw.textfield('LOBBY', 'bold 60px Arial', '#FFF', ),
+      textfield = draw.textfield("LOBBY \n \n Instructions: \n Blue ship is on a mission to investigate the strange \n gravity of an astroid field in deep space when they are \n attacked by a red pirate cruiser! \n Blue's job is to survive until reinforcements \n arrive (5 turns). \n Red's job is to board Blue ship. \n Good luck.", 'bold 60px Impact', '#ffffff', ),
       menu = opspark.factory.menu(game);
+
       
     // add all view components to the view container //
     asset.addChild(textfield, menu.asset);
@@ -33,10 +34,10 @@
      * Use render() to config and position components.
      */
     function render() {
-      canvas.style.backgroundColor = '#EEE';
+      canvas.style.backgroundColor = '#000000';
       
       textfield.alpha = 0;
-      textfield.x = canvas.width / 2;
+      textfield.x = canvas.width / 1.74;
       textfield.y = 10;
     }
     
