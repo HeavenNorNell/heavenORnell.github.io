@@ -5,13 +5,13 @@ $(document).ready(function () {
   $("#zero").on("click", select0);
 
   function select1() {
-    $("#one").css("background-color","#ffd5ff");
-    $("#zero").css("background-color","#3fa7d6");
+    $("#one").css("background-color","#3fa7d6");
+    $("#zero").css("background-color","#92d1c3");
   }
 
   function select0() {
-    $("#zero").css("background-color","#ffd5ff");
-    $("#one").css("background-color","#3fa7d6");
+    $("#zero").css("background-color","#3fa7d6");
+    $("#one").css("background-color","#92d1c3");
   }
 
   function handleClick() {
