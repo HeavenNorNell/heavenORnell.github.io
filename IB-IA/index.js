@@ -1,17 +1,20 @@
 $(document).ready(function () {
-
   $("#random").on("click", handleClick);
   $("#one").on("click", select1);
   $("#zero").on("click", select0);
+  let myBet = null;
+  const arr = [];
 
   function select1() {
-    $("#one").css("background-color","#3fa7d6");
-    $("#zero").css("background-color","#92d1c3");
+    myBet = 1;
+    $("#one").css("background-color", "#3fa7d6");
+    $("#zero").css("background-color", "#92d1c3");
   }
 
   function select0() {
-    $("#zero").css("background-color","#3fa7d6");
-    $("#one").css("background-color","#92d1c3");
+    myBet = 0;
+    $("#zero").css("background-color", "#3fa7d6");
+    $("#one").css("background-color", "#92d1c3");
   }
 
   function handleClick() {
@@ -19,9 +22,18 @@ $(document).ready(function () {
   }
 
   function randomize() {
+    if (arr.length >= 100) {
+      return "100 values recorded";
+    }
+    if (myBet === null) {
+      alert("Please select a number to continue.");
+      return;
+    }
     int = Math.random() >= 0.5 ? 1 : 0;
     $("#num").text(int);
-    return int;
+    const obj = { bet: myBet, result: int };
+    arr.push(obj);
+    return obj;
   }
 
   //   function randomize() {
