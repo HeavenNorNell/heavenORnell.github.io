@@ -9,6 +9,20 @@ body {
   width: 50%;
 }
 
+#counter {
+  position: relative;
+  top: -811px;
+  left: 740px;
+  font-size: 30px;
+  color: #fdf5bf;
+  background-color: #3fa7d6;
+  width: 60px;
+  padding: 40px;
+  padding-left: 40px;
+  padding-right: 90px;
+  border-radius: 25px;
+}
+
 #center {
   padding: 41px;
   height: 520px;
