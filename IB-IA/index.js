@@ -5,6 +5,8 @@ $(document).ready(function () {
   let myBet = null;
   const arr = [];
 
+
+
   function select1() {
     myBet = 1;
     $("#one").css("background-color", "#3fa7d6");
@@ -18,7 +20,8 @@ $(document).ready(function () {
   }
 
   function handleClick() {
-    console.log(randomize());
+    console.log(randomize());;
+    $("#counter").text("Counter:\n" + arr.length);
   }
 
   function randomize() {
