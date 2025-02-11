@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function (val) {
+    return val;
+}
 
 /** _.typeOf
 * Arguments:
@@ -42,21 +44,30 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 _.typeOf = function (val) {
-    if (val === true || val === false) {
+
+    if (val === null) {
+        return "null"
+    } else if (val === undefined) {
+        return "undefined"
+    } else if (val === true || val === false) {
         return "boolean";
-    } if (val[0]) {
-        return "array";
+    } if (val.trim) {
+        return "string";
     } else if (val * 0 === 0) {
         return "number";
     }
-    val.add = "add";
-    if (val.add === "add") {
-        return "object"
-    }
-    val = val + "a";
-    if (val.includes("a")) {
-        return "string";
-    }
+
+    let val2 = val;
+    val2.add = "add";
+    try { val() } catch (error) {
+        if (val2[0]) {
+            return "array"
+        }
+        return "object";
+    };
+
+    return "function";
+
 
 }
 
@@ -114,7 +125,14 @@ _.typeOf = function (val) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
-
+_.indexOf = function (arr, val) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === val) {
+            return i;
+        }
+    }
+    return -1;
+}
 /** _.contains
 * Arguments:
 *   1) An array
@@ -129,7 +147,14 @@ _.typeOf = function (val) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function (arr, val) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === val) {
+            return true;
+        }
+    };
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -146,7 +171,13 @@ _.typeOf = function (val) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function (arr, fun) {
+    if (arr[0]) {
+        for (let i = 0; i < arr.length; i++) {
+            fun(arr[i], i, arr);
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
@@ -174,7 +205,15 @@ _.typeOf = function (val) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function (arr, fun) {
+    let arrNew = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (fun(arr[i], i, arr)) {
+            arrNew.push(arr[i]);
+        }
+    }
+    return arrNew;
+}
 
 /** _.reject
 * Arguments:
@@ -188,7 +227,15 @@ _.typeOf = function (val) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function (arr, fun) {
+    let arrNew = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (!fun(arr[i], i, arr)) {
+            arrNew.push(arr[i]);
+        }
+    }
+    return arrNew;
+}
 
 /** _.partition
 * Arguments:
@@ -226,7 +273,15 @@ _.typeOf = function (val) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
-
+_.map = function (arr, fun) {
+    if (arr[0]) {
+        let arrNew = [];
+        for (let i = 0; i < arr.length; i++) {
+            arrNew.push(fun(arr[i], i, arr));
+        }
+        return arrNew;
+    }
+}
 /** _.pluck
 * Arguments:
 *   1) An array of objects
