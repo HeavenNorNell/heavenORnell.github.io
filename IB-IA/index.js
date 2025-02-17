@@ -25,8 +25,8 @@ $(document).ready(function () {
   }
 
   function randomize() {
-    if (arr.length >= 100) {
-      return "100 values recorded";
+    if (arr.length >= 300) {
+      return "300 values recorded";
     }
     if (myBet === null) {
       alert("Please select a number to continue.");

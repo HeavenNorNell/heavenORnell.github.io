@@ -7,7 +7,6 @@ body {
 
 #center {
   padding: 41px;
-  height: 4900px;
   background: #ffd5ff;
   margin: auto;
   width: 80%;
@@ -79,14 +78,10 @@ p {
   padding: 10px;
 }
 
-#secret {
-  position: relative;
-  top: 1440px;
-}
-
 #gif {
   position: relative;
-  top: -90px;
+  top: -35px;
+  left: 435px;
   image-rendering: optimizeSpeed;
   /* STOP SMOOTHING, GIVE ME SPEED  */
   image-rendering: -moz-crisp-edges;
