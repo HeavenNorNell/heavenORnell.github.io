@@ -2,11 +2,12 @@
 const http = require('http');
 const port = 2218;
 http.createServer(async function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    let fetchResponse = await fetch('https://heavenORnell.github.io')
+    var args = process.argv.slice(2);
+    var url = args[0] ? args[0] : "https://wikipedia.org";
+        res.writeHead(200, { "Content-Type": args[1] });      
+    let fetchResponse = await fetch(url)
     if (fetchResponse.ok) {
-        // need to await the text
-        const html = fetchResponse.text();
+        const html = await fetchResponse.text();
         res.write(html);
     } else {
         res.write('error:' + fetchResponse.statusText + ', ' + fetchResponse.status);
