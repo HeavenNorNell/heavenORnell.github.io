@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
     let startTime = date.getTime();
 
     // TODO 12: Make the whole thing parallel
-    async.series(
+    async.parallel(
         // TODO 9: Supply an array of functions
         [
             function (callback) {
@@ -34,9 +34,7 @@ http.createServer(function (req, res) {
             // TODO 10: add a callback function to the end of the async call to tally the results 
             res.write("Results:\n");
             var victoryOrder = sortTogether(racers, results);
-            for (let i = 0; i > victoryOrder.length; i++) {
-                res.write(victoryOrder[i] + "\n");
-            }
+            res.write(victoryOrder + "\n");
             let d = new Date();
             let endTime = d.getTime();
             let duration = endTime - startTime;
