@@ -67,8 +67,6 @@ _.typeOf = function (val) {
     };
 
     return "function";
-
-
 }
 
 /** _.first
@@ -89,6 +87,21 @@ _.typeOf = function (val) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function (arr, num) {
+    if (this.typeOf(arr) === "array") {
+        if (this.typeOf(num) === "number") {
+            let arr2 = [];
+            for (let i = 0; i < num; i++) {
+                arr2.push(arr[i])
+            }
+            return arr2;
+        } else {
+            return arr[0]
+        }
+    } else {
+        return [];
+    }
+}
 
 /** _.last
 * Arguments:
