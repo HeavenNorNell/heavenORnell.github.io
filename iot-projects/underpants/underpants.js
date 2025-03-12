@@ -91,6 +91,9 @@ _.first = function (arr, num) {
     if (this.typeOf(arr) === "array") {
         if (this.typeOf(num) === "number") {
             let arr2 = [];
+            if (num > arr.length) {
+                return arr;
+            }
             for (let i = 0; i < num; i++) {
                 arr2.push(arr[i])
             }
@@ -121,6 +124,24 @@ _.first = function (arr, num) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (arr, num) {
+    if (this.typeOf(arr) === "array") {
+        if (this.typeOf(num) === "number") {
+            let arr2 = [];
+            if (num > arr.length) {
+                return arr;
+            }
+            for (let i = arr.length + 1 - num; i < num; i++) {
+                arr2.push(arr[i])
+            }
+            return arr2;
+        } else {
+            return arr[0]
+        }
+    } else {
+        return [];
+    }
+}
 
 /** _.indexOf
 * Arguments:
