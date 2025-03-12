@@ -5,19 +5,20 @@ const server = http.createServer(function (req, res) {
     try {
         if (req.method === "GET") {
             res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write(serverStatus);
+            res.write(serverStatus.message);
         } else if (req.method === "PUT") {
             var body = "";
-            req.on("data", function(data){
+            req.on("data", function (data) {
                 body += data;
             });
 
-            req.on("end", function(){
+            req.on("end", function () {
                 serverStatus = {};
-                serverStatus.status = JSON.parse(body);
-                res.writeHead(200, { "Content-Type": "text/plain" });
-                res.write("The server has been updated.");
+                serverStatus = JSON.parse(body);
+
             });
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.write("The server has been updated.");
         }
     } catch (error) {
         res.writeHead(500, { "Content-Type": "text/plain" });
