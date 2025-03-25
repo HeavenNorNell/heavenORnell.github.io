@@ -55,20 +55,20 @@ $(document).ready(function () {
     const ws = {
       highest: 0,
       lowest: 100,
-      highID: "#ws-highest",
-      lowID: "#ws-lowest",
+      highID: "ws-highest",
+      lowID: "ws-lowest",
     }
     const ajax = {
       highest: 0,
       lowest: 100,
-      highID: "#ajax-highest",
-      lowID: "#ajax-lowest",
+      highID: "ajax-highest",
+      lowID: "ajax-lowest",
     }
     const json = {
       highest: 0,
       lowest: 100,
-      highID: "#json-highest",
-      lowID: "#json-lowest",
+      highID: "json-highest",
+      lowID: "json-lowest",
     };
 
     $("#json-chart-container").append(
@@ -157,7 +157,7 @@ $(document).ready(function () {
     setInterval(doAjaxPoll, 10000)
     // TODO 8: WebSocket Polling
 
-    var socket = new WebSocket("ws://f76a-12-221-34-58.ngrok-free.app/pi/sensors/dht/temperature");
+    var socket = new WebSocket("http://localhost:8080");
     socket.onmessage = function (event) {
       var result = JSON.parse(event.data);
       addDataPoint(result, wsData, wsChart);

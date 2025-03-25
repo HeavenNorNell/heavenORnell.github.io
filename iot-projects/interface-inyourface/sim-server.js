@@ -48,9 +48,9 @@ const wss = new WebSocket.Server({ server });
 wss.on("connection", function (socket) {
   setInterval(function () {
     if (socket.readyState === WebSocket.OPEN) {
-      socket.send();
+      socket.send(JSON.stringify({ value: temperature }));
     }
-  }, 1000);
+  }, 5000);
 })
 
 
