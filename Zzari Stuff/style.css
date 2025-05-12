@@ -1,0 +1,39 @@
+
+#TopBar {
+    background-color: #315e31;
+  color: #e6d7a1;
+    position: relative;
+  top: -10;
+    margin: auto;
+    width: 110%;
+    height: 80px;
+    left: -10;
+    padding-top: 5;
+    padding-left: 20;
+  }
+  body {
+    background-color: #343633
+  }
+  .dropDown {
+    position: relative;
+    top: -49;
+    left: 20%;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    font-size: 20;
+    padding: 30
+  }
+  #main {
+    width: 100%;
+    background-color: lightblue;
+  }
+  .list {
+    background-color: lightblue;
+    position: relative;
+  top: -30;
+    margin: auto;
+    width: 110%;
+    height: 80px;
+  left: -18;
+    padding-top: 5;
+    padding-left: 40;
+  }
