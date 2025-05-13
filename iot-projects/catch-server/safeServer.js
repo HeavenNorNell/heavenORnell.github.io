@@ -21,7 +21,7 @@ const server = http.createServer(function (req, res) {
             res.write("The server has been updated.");
         }
     } catch (error) {
-        res.writeHead(500, { "Content-Type": "text/plain" });
+        // res.writeHead(500, { "Content-Type": "text/plain" });
         res.write("The server has no data.");
     } finally {
         res.write("--and the message arrived");
