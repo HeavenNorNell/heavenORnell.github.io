@@ -20,7 +20,8 @@
     left: 20%;
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
     font-size: 20;
-    padding: 30
+    padding: 30;
+    color: #e6d7a1;
   }
   #main {
     width: 100%;
